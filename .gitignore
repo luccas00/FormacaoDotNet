@@ -1,0 +1,14 @@
+# Ignorar arquivos e pastas de configuração do Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar arquivos de banco de dados em memória e cache
+*.db
+*.sqlite
+*.log
+
+# Ignorar arquivos temporários
+*.tmp
