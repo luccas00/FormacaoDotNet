@@ -3,17 +3,21 @@ using Microsoft.AspNetCore.Mvc;
 using API_Two.Controllers;
 using API_Two.Models;
 using API_Two.Context;
+using API_Two;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Testing;
+using System.Net.Http;
 
 namespace TestUnit_API_Two
 {
-    public class ContatoControllerTests : IDisposable
+    public class ContatoControllerTeste : IDisposable
     {
         private readonly ContatoController _controller;
         private readonly MyContext _context;
 
-        public ContatoControllerTests()
+        public ContatoControllerTeste()
         {
             var options = new DbContextOptionsBuilder<MyContext>()
                 .UseInMemoryDatabase(databaseName: "ContatoTestDatabase")
@@ -23,6 +27,7 @@ namespace TestUnit_API_Two
             _controller = new ContatoController(_context);
         }
 
+
         public void Dispose()
         {
             _context.Database.EnsureDeleted(); // Limpa o banco de dados após cada teste
@@ -30,10 +35,10 @@ namespace TestUnit_API_Two
         }
 
         [Fact]
-        public void GetByCPF_ShouldReturnOkResult_WhenContatoExists()
+        public void GetByCPF_DeveRetornarOk_ContatoExiste()
         {
             // Arrange
-            var contato = new Contato("123.456.789-06", "Contato 6", "contato6@teste.com", "9988-0123", "Rua 6");
+            var contato = new Contato("111.444.777-09", "Contato Teste1", "contatoTeste1@teste.com", "9988-0123", "Rua Teste1");
             _context.Contatos.Add(contato);
             _context.SaveChanges();
 
@@ -84,3 +89,52 @@ namespace TestUnit_API_Two
         }
     }
 }
+
+
+//[Fact]
+//public async Task GetFatorial_DeveRetornarOk()
+//{
+//    // Act
+//    var response = await _client.GetAsync("/Home/GetFatorial/5");
+
+//    // Assert
+//    response.EnsureSuccessStatusCode(); // Verifica se o status da resposta é 2xx
+//    Assert.Equal("application/json; charset=utf-8",
+//        response.Content.Headers.ContentType.ToString());
+//}
+
+//[Fact]
+//public async Task GetFatorial_DeveRetornarFatorialCorreto()
+//{
+//    // Act
+//    var response = await _client.GetAsync("/Home/GetFatorial/5");
+//    var content = await response.Content.ReadAsStringAsync();
+
+//    // Assert
+//    response.EnsureSuccessStatusCode();
+//    Assert.Contains("\"Resultado\":120", content); // Verifica se o resultado esperado está presente
+//}
+
+//[Fact]
+//public async Task GetFibonacci_DeveRetornarOk()
+//{
+//    // Act
+//    var response = await _client.GetAsync("/Home/GetFibonacci/7");
+
+//    // Assert
+//    response.EnsureSuccessStatusCode();
+//    Assert.Equal("application/json; charset=utf-8",
+//        response.Content.Headers.ContentType.ToString());
+//}
+
+//[Fact]
+//public async Task GetFibonacci_DeveRetornarFibonacciCorreto()
+//{
+//    // Act
+//    var response = await _client.GetAsync("/Home/GetFibonacci/7");
+//    var content = await response.Content.ReadAsStringAsync();
+
+//    // Assert
+//    response.EnsureSuccessStatusCode();
+//    Assert.Contains("\"Resultado\":13", content); // Verifica se o resultado esperado está presente
+//}
