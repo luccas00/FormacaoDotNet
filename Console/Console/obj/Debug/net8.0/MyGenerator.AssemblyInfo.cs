@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("TestUnit_API_Two")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MyGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3640cba75ef8c2763e55839002e6a24cc51bf804")]
-[assembly: System.Reflection.AssemblyProductAttribute("TestUnit_API_Two")]
-[assembly: System.Reflection.AssemblyTitleAttribute("TestUnit_API_Two")]
+[assembly: System.Reflection.AssemblyProductAttribute("MyGenerator")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MyGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
